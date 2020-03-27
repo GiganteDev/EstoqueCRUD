@@ -21,7 +21,7 @@ if(isset($_SESSION['user']) ){ // Se sessão existir
 <body>
     <div class="container">
         <center>
-            <form class="form-signin" method="POST" action="../_banco/login.php">
+            <form class="form-signin" method="POST" action="../_banco/login/">
                 <img class="mb-4" src="_img/logo.png" alt="logo" width="120" height="120">
                 <h1 class="h3 mb-3 font-weight-normal">Bem vindo(a)</h1>
                 <label for="inputUser" class="sr-only">Usuário</label>

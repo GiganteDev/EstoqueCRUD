@@ -1,5 +1,5 @@
 <?php
-include '../_banco/conexao.php'; // Inclui script de conexão ao DB
+include '../conexao.php'; // Inclui script de conexão ao DB
 $user_usuario = $_POST['user']; // Recebe do form o user
 $senha_usuario = $_POST['senha']; // Recebe do form a senha
 $sql = "SELECT user_usuario, senha_usuario FROM usuarios WHERE user_usuario='$user_usuario' AND status_usuario='ativo'" ;

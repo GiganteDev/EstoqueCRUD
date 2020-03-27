@@ -94,11 +94,11 @@ if(!(isset($_SESSION['user']))){
   <center>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Dados do cadastro</h4>
-      <form class="needs-validation" novalidate>
+      <form action="../../_banco/usuarios/" method="POST" class="needs-validation" novalidate>
       <div class="row">
           <div class="col mb">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Nome" value="" required>
+            <input name="nome_usuario" type="text" class="form-control" id="firstName" placeholder="Nome" value="" required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
@@ -112,7 +112,7 @@ if(!(isset($_SESSION['user']))){
             <div class="input-group-prepend">
               <span class="input-group-text">@</span>
             </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
+            <input name="user_usuario" type="text" class="form-control" id="username" placeholder="Username" required>
             <div class="invalid-feedback" style="width: 100%;">
               Your username is required.
             </div>
@@ -122,7 +122,7 @@ if(!(isset($_SESSION['user']))){
         <div class="row">
           <div class="col mb">
             <label for="firstName">Senha</label>
-            <input type="password" class="form-control" id="senha_usuario" placeholder="Senha" value="" required>
+            <input name="senha_usuario" id="txtSenha" type="password" type="password" class="form-control" id="senha_usuario" placeholder="Senha" value="" required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
@@ -135,28 +135,28 @@ if(!(isset($_SESSION['user']))){
 
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input value="administrador" id="administrador" name="nivel_usuario" type="radio" class="custom-control-input" checked required>
+            <input name="nivel_usuario" value="administrador" id="administrador" name="nivel_usuario" type="radio" class="custom-control-input" checked required>
             <label class="custom-control-label" for="administrador">Administrador</label>
           </div>
           <div class="custom-control custom-radio">
-            <input value="funcionario" id="funcionario" name="nivel_usuario" type="radio" class="custom-control-input" required>
+            <input name="nivel_usuario" value="funcionario" id="funcionario" name="nivel_usuario" type="radio" class="custom-control-input" required>
             <label class="custom-control-label" for="funcionario">Funcionário</label>
           </div>
           <div class="custom-control custom-radio">
-            <input value="3" id="3" name="nivel_usuario" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="3">Conferente</label>
+            <input name="nivel_usuario" value="conferente" id="conferente" name="nivel_usuario" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="conferente">Conferente</label>
           </div>
         </div>
         <hr class="mb-4">
-        <h4 class="mb-3">Nível de controle</h4>
+        <h4 class="mb-3">Status de atividade</h4>
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input value="ativo" id="ativo" name="status_usuario" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="ativo">Administrador</label>
+            <input name="status_usuario" value="ativo" id="ativo" name="status_usuario" type="radio" class="custom-control-input" checked required>
+            <label class="custom-control-label" for="ativo">Ativo</label>
           </div>
           <div class="custom-control custom-radio">
-            <input value="inativo" id="inativo" name="status_usuario" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="inativo">Funcionário</label>
+            <input name="status_usuario" value="inativo" id="inativo" name="status_usuario" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="inativo">Inativo</label>
           </div>
         </div>
         <hr class="mb-4">
