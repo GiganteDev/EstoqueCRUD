@@ -12,6 +12,10 @@ if(isset($_SESSION['user'])){ // Se estiver logado (sessão ativa)
   }
   $nome1 = (isset($nome['0'])) ? $nome['0'] : '';
   $nome2 = (isset($nome['1'])) ? $nome['1'] : '';
+  if(($nivel == "funcionario") || ($nivel == "conferente")){
+    header('location:/');
+    exit();
+  }
 }
 if(!(isset($_SESSION['user']))){
   header("location:/");
