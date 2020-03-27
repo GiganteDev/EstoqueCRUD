@@ -79,7 +79,7 @@ if(!(isset($_SESSION['user']))){
       </ul>
       <span class="navbar-text">
         <?php if(isset($_SESSION['user'])): // Se a sessão existe, mostra o nome do usuário ?>
-        <a href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;<?php echo "$nome1 $nome2";?></a>
+        <a href="../../logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;<?php echo "$nome1 $nome2";?></a>
         <?php else: // Se a sessão não existe, mostra o botão de login ?>
           <a href="login.php"><i class="fas fa-sign-in-alt"></i>&nbsp;<?php echo 'Login';?></a>
         <?php endif // Fim da condição ?>
