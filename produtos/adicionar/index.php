@@ -60,11 +60,11 @@ if(!(isset($_SESSION['user']))){
           </div>
           <?php if(!($nivel == "conferente")): // Se for conferente, não pode adicionar nada ?>
             <?php if(!($nivel == "funcionario")): // Se for funcionário, não pode adicionar usuário ?>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="../../usuarios/adicionar/">Adicionar Usuário</a>
               </li>
             <?php endif // Fim da condição ?>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="../../produtos/adicionar/">Adicionar Produtos</a>
             </li>
             <li class="nav-item">
@@ -88,76 +88,79 @@ if(!(isset($_SESSION['user']))){
   </nav>
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Adicionar usuários</h2>
+    <h2>Adicionar produtos</h2>
     <p class="lead">Abaixo está um exemplo de formulário criado com os controles de formulário do Bootstrap.</p>
   </div>
   <center>
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Dados do cadastro</h4>
-      <form action="../../_banco/usuarios/adicionar/" method="POST" class="needs-validation" novalidate>
-      <div class="row">
-          <div class="col mb">
-            <label for="firstName">Nome completo</label>
-            <input name="nome_usuario" type="text" class="form-control" id="firstName" placeholder="Nome" value="" required>
-            <div class="invalid-feedback">
-              Valid first name is required.
+        <h4 class="mb-3">Dados do produto</h4>
+        <form action="../../_banco/produtos/adicionar/" method="POST" class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col mb">
+                <label for="nroProduto">Nro produto</label>
+                <input name="nro_produto" type="number" class="form-control" id="nroProduto" placeholder="Nome" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
             </div>
-          </div>
+        </div>
+        <div class="row">
+            <div class="col mb">
+                <label for="nomeProduto">Nome do produto</label>
+                <input name="nome_produto" type="text" class="form-control" id="nomeProduto" placeholder="Nome" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb">
+                <label for="quantidadeProduto">Quantidade</label>
+                <input name="quantidade_produto" type="number" class="form-control" id="quantidadeProduto" placeholder="Nome" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+            </div>
         </div>
         
 
-        <div class="mb-3">
-          <label for="username">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input name="user_usuario" type="text" class="form-control" id="username" placeholder="Username" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col mb">
-            <label for="firstName">Senha</label>
-            <input name="senha_usuario" id="txtSenha" type="password" type="password" class="form-control" id="senha_usuario" placeholder="Senha" value="" required>
-            <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
-        </div>
-
 
         <hr class="mb-4">
-        <h4 class="mb-3">Nível de controle</h4>
-
+        <h4 class="mb-3">Categoria</h4>
         <div class="d-block my-3">
+<?php
+include '../../_banco/conexao.php';
+$sql = "SELECT * FROM categorias";
+$busca = mysqli_query($conexao, $sql);
+$cont = 0;
+while ($array = mysqli_fetch_array($busca)):
+    $cont = $cont + 1;
+    $id = $array['id'];
+    $categorias = $array['categoria']
+?>
           <div class="custom-control custom-radio">
-            <input name="nivel_usuario" value="administrador" id="administrador" name="nivel_usuario" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="administrador">Administrador</label>
+            <input name="categoria_produto" value="<?php echo $categorias; ?>" id="<?php echo $categorias; ?>" name="nivel_usuario" type="radio" class="custom-control-input" <?php echo ($cont==1) ? "checked" : ""; ?> required>
+            <label class="custom-control-label" for="<?php echo $categorias; ?>"><?php echo $categorias; ?></label>
           </div>
-          <div class="custom-control custom-radio">
-            <input name="nivel_usuario" value="funcionario" id="funcionario" name="nivel_usuario" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="funcionario">Funcionário</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input name="nivel_usuario" value="conferente" id="conferente" name="nivel_usuario" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="conferente">Conferente</label>
-          </div>
+<?php endwhile ?>
         </div>
         <hr class="mb-4">
-        <h4 class="mb-3">Status de atividade</h4>
+        <h4 class="mb-3">Fornecedor</h4>
         <div class="d-block my-3">
+<?php
+$sql = "SELECT * FROM fornecedores";
+$busca = mysqli_query($conexao, $sql);
+$cont = 0;
+while ($array = mysqli_fetch_array($busca)):
+    $cont = $cont + 1;
+    $id = $array['id'];
+    $fornecedores = $array['fornecedor']
+?>
           <div class="custom-control custom-radio">
-            <input name="status_usuario" value="ativo" id="ativo" name="status_usuario" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="ativo">Ativo</label>
+            <input name="fornecedor_produto" value="<?php echo $fornecedores; ?>" id="<?php echo $fornecedores; ?>" name="status_usuario" type="radio" class="custom-control-input" <?php echo ($cont==1) ? "checked" : ""; ?> required>
+            <label class="custom-control-label" for="<?php echo $fornecedores; ?>"><?php echo $fornecedores; ?></label>
           </div>
-          <div class="custom-control custom-radio">
-            <input name="status_usuario" value="inativo" id="inativo" name="status_usuario" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="inativo">Inativo</label>
-          </div>
+<?php endwhile ?>
         </div>
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
