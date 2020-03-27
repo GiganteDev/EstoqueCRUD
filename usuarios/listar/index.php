@@ -1,6 +1,6 @@
 <?php
 session_start(); // Inicia sessão
-include '../_banco/conexao.php'; // Chama a conexão do banco de dados
+include '../../_banco/conexao.php'; // Chama a conexão do banco de dados
 if(isset($_SESSION['user'])){ // Se estiver logado (sessão ativa)
   $usuario = $_SESSION['user']; // Pega user do usuário logado na sessão
   $sql = "SELECT `nome_usuario`, `nivel_usuario` FROM `usuarios` WHERE user_usuario = '$usuario' AND status_usuario='ativo'";
@@ -44,34 +44,34 @@ if(!(isset($_SESSION['user']))){
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/q1dcc" target="_blank">GitHub</a>
         </li>
-        <?php if(isset($_SESSION['usuario'])): // Se não estiver logado, não pode ver as páginas ?>
+        <?php if(isset($_SESSION['user'])): // Se não estiver logado, não pode ver as páginas ?>
           <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administração
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="listar_produtos.php">Produtos</a>
-            <a class="dropdown-item" href="listar_fornecedores.php">Fornecedores</a>
-            <a class="dropdown-item" href="listar_categorias.php">Categorias</a>
+            <a class="dropdown-item" href="../../produtos/listar/">Produtos</a>
+            <a class="dropdown-item" href="../../fornecedores/listar/">Fornecedores</a>
+            <a class="dropdown-item" href="../../categorias/listar/">Categorias</a>
             <?php if($nivel == "administrador"): // Se for administrador, pode listar usuários ?>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="listar_usuarios.php">Usuários</a>
+            <a class="dropdown-item" href="../../usuarios/listar/">Usuários</a>
             <?php endif // Fim da condição ?>
           </div>
           <?php if(!($nivel == "conferente")): // Se for conferente, não pode adicionar nada ?>
             <?php if(!($nivel == "funcionario")): // Se for funcionário, não pode adicionar usuário ?>
               <li class="nav-item">
-                <a class="nav-link" href="adicionar_usuario.php">Adicionar Usuário</a>
+                <a class="nav-link" href="../../usuarios/adicionar/">Adicionar Usuário</a>
               </li>
             <?php endif // Fim da condição ?>
             <li class="nav-item">
-              <a class="nav-link" href="adicionar_produto.php">Adicionar Produtos</a>
+              <a class="nav-link" href="../../produtos/adicionar/">Adicionar Produtos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="adicionar_categoria.php">Adicionar Categorias</a>
+              <a class="nav-link" href="../../categorias/adicionar/">Adicionar Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="adicionar_fornecedor.php">Adicionar Fornecedores</a>
+              <a class="nav-link" href="../../fornecedores/adicionar/">Adicionar Fornecedores</a>
             </li>
             <?php endif // Fim da condição ?>
         <?php endif // Fim da condição ?>
