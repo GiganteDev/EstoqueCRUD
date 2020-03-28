@@ -23,7 +23,7 @@ if(!(isset($_SESSION['user']))){
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Adicionar produtos</title>
+    <title>Adicionar categorias</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/95f9171d07.js" crossorigin="anonymous"></script>
@@ -88,79 +88,21 @@ if(!(isset($_SESSION['user']))){
   </nav>
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Adicionar produtos</h2>
+    <h2>Adicionar categorias</h2>
     <p class="lead">Abaixo está um exemplo de formulário criado com os controles de formulário do Bootstrap.</p>
   </div>
   <center>
     <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Dados do produto</h4>
-        <form action="../../_banco/produtos/adicionar/" method="POST" class="needs-validation" novalidate>
+        <h4 class="mb-3">Dados da categoria</h4>
+        <form action="../../_banco/categorias/adicionar/" method="POST" class="needs-validation" novalidate>
         <div class="row">
             <div class="col mb">
-                <label for="nroProduto">Nro produto</label>
-                <input name="nro_produto" type="number" class="form-control" id="nroProduto" placeholder="Nome" value="" required>
+                <label for="categoriaProduto">Nome da categoria</label>
+                <input name="categoria_produto" type="text" class="form-control" id="categoriaProduto" placeholder="Nome" value="" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col mb">
-                <label for="nomeProduto">Nome do produto</label>
-                <input name="nome_produto" type="text" class="form-control" id="nomeProduto" placeholder="Nome" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb">
-                <label for="quantidadeProduto">Quantidade</label>
-                <input name="quantidade_produto" type="number" class="form-control" id="quantidadeProduto" placeholder="Nome" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-            </div>
-        </div>
-        
-
-
-        <hr class="mb-4">
-        <h4 class="mb-3">Categoria</h4>
-        <div class="d-block my-3">
-<?php
-include '../../_banco/conexao.php';
-$sql = "SELECT * FROM categorias";
-$busca = mysqli_query($conexao, $sql);
-$cont = 0;
-while ($array = mysqli_fetch_array($busca)):
-    $cont = $cont + 1;
-    $id = $array['id'];
-    $categorias = $array['categoria']
-?>
-          <div class="custom-control custom-radio">
-            <input name="categoria_produto" value="<?php echo $categorias; ?>" id="<?php echo $categorias; ?>" name="nivel_usuario" type="radio" class="custom-control-input" <?php echo ($cont==1) ? "checked" : ""; ?> required>
-            <label class="custom-control-label" for="<?php echo $categorias; ?>"><?php echo $categorias; ?></label>
-          </div>
-<?php endwhile ?>
-        </div>
-        <hr class="mb-4">
-        <h4 class="mb-3">Fornecedor</h4>
-        <div class="d-block my-3">
-<?php
-$sql = "SELECT * FROM fornecedores";
-$busca = mysqli_query($conexao, $sql);
-$cont = 0;
-while ($array = mysqli_fetch_array($busca)):
-    $cont = $cont + 1;
-    $id = $array['id'];
-    $fornecedores = $array['fornecedor']
-?>
-          <div class="custom-control custom-radio">
-            <input name="fornecedor_produto" value="<?php echo $fornecedores; ?>" id="<?php echo $fornecedores; ?>" name="status_usuario" type="radio" class="custom-control-input" <?php echo ($cont==1) ? "checked" : ""; ?> required>
-            <label class="custom-control-label" for="<?php echo $fornecedores; ?>"><?php echo $fornecedores; ?></label>
-          </div>
-<?php endwhile ?>
         </div>
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Adicionar</button>

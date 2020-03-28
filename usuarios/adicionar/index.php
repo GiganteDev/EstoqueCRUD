@@ -164,7 +164,7 @@ if(!(isset($_SESSION['user']))){
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Adicionar</button>
       </form>
     </div>
   </div>
