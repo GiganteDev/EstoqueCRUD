@@ -98,7 +98,7 @@ if(!(isset($_SESSION['user']))){
         <div class="row">
             <div class="col mb">
                 <label for="fornecedorProduto">Nome da fornecedor</label>
-                <input name="fornecedor_produto" type="text" class="form-control" id="fornecedorProduto" placeholder="Nome" value="" required>
+                <input name="nome_fornecedor" type="text" class="form-control" id="fornecedorProduto" placeholder="Nome" value="" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>

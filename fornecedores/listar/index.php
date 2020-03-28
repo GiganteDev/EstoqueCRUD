@@ -111,11 +111,11 @@ if(!(isset($_SESSION['user']))){
 
                     while ($array = mysqli_fetch_array($busca)):
                         $id = $array['id'];
-                        $fornecedor_produto = $array['fornecedor'];
+                        $nome_fornecedor = $array['fornecedor'];
                 ?>
                 <tr>
                     <td><?php echo $id?></td>
-                    <td><?php echo $fornecedor_produto?></td>
+                    <td><?php echo $nome_fornecedor?></td>
                     <td>
                         <a class="btn btn-sm btn-warning" href="editar_categoria.php?id=<?php echo $id ?>" role="button"><i class="far fa-edit"></i>&nbsp;Editar</a>
                         <a class="btn btn-sm btn-danger" href="_deletar_categoria.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Deletar</a>
