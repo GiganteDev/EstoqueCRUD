@@ -17,10 +17,10 @@ if(!(isset($_SESSION['user']))){
     header("location:/");
     exit();
 }
-$categoria_produto = $_POST['categoria_produto']; // Recebe o valor do atributo
+$nome_categoria = $_POST['nome_categoria']; // Recebe o valor do atributo
 // Comando de inserção dos dados na tabela:
-$sql = "INSERT INTO `categorias`(`categoria`) VALUES ('$categoria_produto')";
+$sql = "INSERT INTO `categorias`(`categoria`) VALUES ('$nome_categoria')";
 // Faz a conexão dos dados no banco:
 $inserir = mysqli_query($conexao, $sql);
-header('location:/categorias/listar/');
+header('location:/'); // Tem que mudar //
 ?>
